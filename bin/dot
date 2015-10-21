@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# dot
+#
+# `dot` handles installation, updates, things like that. Run it periodically
+# to make sure you're on the latest and greatest.
+export ZSH=$HOME/.dotfiles
+
+# Update composer local packages
+composer global update --no-dev --optimize-autoloader
