@@ -3,8 +3,8 @@
 # Chris Kempson (http://chriskempson.com)
 
 if [ "${TERM%%-*}" = 'linux' ]; then
-    # This script doesn't support linux console (use 'vconsole' template instead)
-    return 2>/dev/null || exit 0
+	# This script doesn't support linux console (use 'vconsole' template instead)
+	return 2>/dev/null || exit 0
 fi
 
 color00="1d/1f/21" # Base 00 - Black
@@ -34,20 +34,20 @@ color_background="1d/1f/21" # Base 00
 color_cursor="c5/c8/c6" # Base 05
 
 if [ -n "$TMUX" ]; then
-  # tell tmux to pass the escape sequences through
-  # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
-  printf_template="\033Ptmux;\033\033]4;%d;rgb:%s\007\033\\"
-  printf_template_var="\033Ptmux;\033\033]%d;rgb:%s\007\033\\"
-  printf_template_custom="\033Ptmux;\033\033]%s%s\007\033\\"
+	# tell tmux to pass the escape sequences through
+	# (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
+	printf_template="\033Ptmux;\033\033]4;%d;rgb:%s\007\033\\"
+	printf_template_var="\033Ptmux;\033\033]%d;rgb:%s\007\033\\"
+	printf_template_custom="\033Ptmux;\033\033]%s%s\007\033\\"
 elif [ "${TERM%%-*}" = "screen" ]; then
-  # GNU screen (screen, screen-256color, screen-256color-bce)
-  printf_template="\033P\033]4;%d;rgb:%s\007\033\\"
-  printf_template_var="\033P\033]%d;rgb:%s\007\033\\"
-  printf_template_custom="\033P\033]%s%s\007\033\\"
+	# GNU screen (screen, screen-256color, screen-256color-bce)
+	printf_template="\033P\033]4;%d;rgb:%s\007\033\\"
+	printf_template_var="\033P\033]%d;rgb:%s\007\033\\"
+	printf_template_custom="\033P\033]%s%s\007\033\\"
 else
-  printf_template="\033]4;%d;rgb:%s\033\\"
-  printf_template_var="\033]%d;rgb:%s\033\\"
-  printf_template_custom="\033]%s%s\033\\"
+	printf_template="\033]4;%d;rgb:%s\033\\"
+	printf_template_var="\033]%d;rgb:%s\033\\"
+	printf_template_custom="\033]%s%s\033\\"
 fi
 
 # 16 color space
@@ -78,18 +78,18 @@ printf $printf_template 21 $color21
 
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
-  # iTerm2 proprietary escape codes
-  printf $printf_template_custom Pg c5c8c6 # forground
-  printf $printf_template_custom Ph 1d1f21 # background
-  printf $printf_template_custom Pi c5c8c6 # bold color
-  printf $printf_template_custom Pj 373b41 # selection color
-  printf $printf_template_custom Pk c5c8c6 # selected text color
-  printf $printf_template_custom Pl c5c8c6 # cursor
-  printf $printf_template_custom Pm 1d1f21 # cursor text
+	# iTerm2 proprietary escape codes
+	printf $printf_template_custom Pg c5c8c6 # forground
+	printf $printf_template_custom Ph 1d1f21 # background
+	printf $printf_template_custom Pi c5c8c6 # bold color
+	printf $printf_template_custom Pj 373b41 # selection color
+	printf $printf_template_custom Pk c5c8c6 # selected text color
+	printf $printf_template_custom Pl c5c8c6 # cursor
+	printf $printf_template_custom Pm 1d1f21 # cursor text
 else
-  printf $printf_template_var 10 $color_foreground
-  printf $printf_template_var 11 $color_background
-  printf $printf_template_var 12 $color_cursor
+	printf $printf_template_var 10 $color_foreground
+	printf $printf_template_var 11 $color_background
+	printf $printf_template_var 12 $color_cursor
 fi
 
 # clean up
