@@ -4,3 +4,4 @@ alias lsa="ls -lAh --color"
 # Debian/Ubuntu specific
 alias ad='sudo apt-get update'
 alias ag='sudo apt-get upgrade'
+alias ai='sudo apt-get install'
