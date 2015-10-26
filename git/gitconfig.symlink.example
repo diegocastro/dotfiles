@@ -3,6 +3,7 @@
 	email = AUTHOREMAIL
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore
 [merge]
 	tool = meld
 [push]
