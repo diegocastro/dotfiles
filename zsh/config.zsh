@@ -46,3 +46,5 @@ bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
+bindkey '^[[1;5C' forward-word	# [Ctrl-RightArrow] - move forward one word
+bindkey '^[[1;5D' backward-word	# [Ctrl-LeftArrow] - move backward one word
