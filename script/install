@@ -62,7 +62,7 @@ install_dependecies () {
 	# keepassx
 	# sudo add-apt-repository -y ppa:diego-castro/keepassx
 
-	sudo apt install stow vim tmux git redshift redshift-gtk keepassx
+	sudo apt update && sudo apt install stow vim tmux git redshift redshift-gtk keepassx
 }
 
 link_dotfiles () {
@@ -97,6 +97,8 @@ link_dotfiles () {
 }
 
 link_home_folders () {
+	info 'link home folders'
+
 	if confirm "Whish to link your home folders? [Y/n]"; then
 		user "Type the path of your home folder [/media/user/home]"
 		read -e home_folder
