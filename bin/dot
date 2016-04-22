@@ -7,7 +7,7 @@
 export ZSH=$HOME/dotfiles
 
 # upgrade composer
-sudo composer sel-fupdate
+sudo composer self-update
 
 # Update composer local packages
 composer global update --no-dev --optimize-autoloader
