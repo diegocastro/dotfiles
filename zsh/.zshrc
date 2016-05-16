@@ -5,31 +5,23 @@ export ZSH=$HOME/dotfiles
 export PROJECTS=~/Projetos
 
 # load the paths file
-source $ZSH/zsh/.zsh/paths.zsh
+for file in $(find "$ZSH" -iname 'path.zsh')
+do
+    source $file
+done
 
-# load aliases file
-source $ZSH/zsh/.zsh/aliases.zsh
-
-# load config file
-source $ZSH/zsh/.zsh/config.zsh
-
-# load prompt file
-source $ZSH/zsh/.zsh/prompt.zsh
-
-# load window file
-source $ZSH/zsh/.zsh/window.zsh
-
-# load env file
-source $ZSH/zsh/.zsh/env.zsh
-
-# load theme
-source $ZSH/zsh/.zsh/theme/theme.zsh
+# load everything but the path and completion files
+for file in $(find "$ZSH" -type f  -iname '*.zsh' ! -iname 'path.zsh' ! -iname 'completion.zsh')
+do
+    source $file
+done
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
 
-# load completion file
-source $ZSH/zsh/.zsh/completion.zsh
-
-unset config_files
+# load every completion after autocomplete loads
+for file in $(find "$ZSH" -type f -iname 'completion.zsh')
+do
+    source $file
+done

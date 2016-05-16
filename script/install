@@ -59,9 +59,6 @@ install_dependecies () {
 	# redshift
 	sudo add-apt-repository -y ppa:dobey/redshift-daily
 
-	# keepassx
-	# sudo add-apt-repository -y ppa:diego-castro/keepassx
-
 	sudo apt update && sudo apt install stow vim tmux git redshift redshift-gtk keepassx
 }
 
@@ -82,7 +79,7 @@ link_dotfiles () {
 	for dir in *;
 	do
 		# skip if not a directory or is one of the protected dir
-		[[ -d "$dir" ]] && [[ ! "bin functions script" =~ $dir ]] || continue
+		[[ -d "$dir" ]] && [[ ! "bin functions script system" =~ $dir ]] || continue
 
 		if [[ "$link_all" == false ]]; then
 			if confirm "Link $dir? [Y/n]"; then
@@ -121,7 +118,7 @@ link_home_folders () {
 	fi
 }
 
-setup_gitconfig
-install_dependecies
+# setup_gitconfig
+# install_dependecies
 link_dotfiles
 link_home_folders
