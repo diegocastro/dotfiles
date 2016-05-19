@@ -1,0 +1,1 @@
+alias dokku='bash $ZSH/dokku/lib/contrib/dokku_client.sh'
