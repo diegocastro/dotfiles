@@ -118,7 +118,7 @@ link_home_folders () {
 	fi
 }
 
-# setup_gitconfig
+setup_gitconfig
 # install_dependecies
 link_dotfiles
 link_home_folders
