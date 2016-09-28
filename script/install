@@ -59,7 +59,7 @@ install_dependecies () {
 	# redshift
 	sudo add-apt-repository -y ppa:dobey/redshift-daily
 
-	sudo apt update && sudo apt install stow vim tmux git redshift redshift-gtk keepassx
+	sudo apt update && sudo apt install zsh stow vim tmux git redshift redshift-gtk keepassx
 }
 
 link_dotfiles () {
@@ -119,6 +119,6 @@ link_home_folders () {
 }
 
 setup_gitconfig
-# install_dependecies
+install_dependecies
 link_dotfiles
 link_home_folders
