@@ -1,0 +1,1 @@
+export VOLUMES_CLI=$(pwd):/www
