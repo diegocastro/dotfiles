@@ -1,2 +1,2 @@
-alias dcomp='docker-compose'
-alias dcompr='dcomp build && dcomp up'
+alias dkc='docker-compose -f $PROJECTS/docker-php/docker-compose.yml'
+alias dkcr='dkc build && dkc up'
