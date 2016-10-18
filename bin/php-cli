@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+docker-compose -f $PROJECTS/docker-php/docker-compose.yml run --rm cli "$@"
