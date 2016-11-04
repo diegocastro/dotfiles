@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+file_encrypted="$@"
+file_decrypted="${file_encripted%.gpg}"
+
+gpg --output "$file_decrypted" --decrypt "$file_encrypted"
