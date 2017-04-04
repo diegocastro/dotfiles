@@ -1,5 +1,6 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/dotfiles
+export ZSH_DIR="$(dirname "$(readlink -f "$0")")"
 
 # your project folder that we can 'c [tab]' to
 export PROJECTS=~/Projetos

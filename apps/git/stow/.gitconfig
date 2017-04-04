@@ -1,0 +1,15 @@
+[user]
+	name = Diego Castro
+	email = castroc.diego@gmail.com
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+[merge]
+	tool = meld
+[push]
+	# See `git help config` (search for push.default)
+	# for more information on different options of the below setting.
+	# Setting to git 2.0 default to suppress warning message
+	default = current
+[mergetool]
+	keepBackup = false
