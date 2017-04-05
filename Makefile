@@ -1,14 +1,13 @@
-DOTFILES := $(shell pwd)
-APPS_DIR = 
-BIN_DIR = ~/bin
-
 install:
-	./scripts/install.sh
-	git submodule init
-	git submodule update
+	@./scripts/install.sh
+	# git submodule init
+	# git submodule update
 
 base16_shell:
 	base16_tomorrow-night
+
+# redshift:
+	# add redshift-gtk to autostart
 
 clean:
 	$(shell reload!)

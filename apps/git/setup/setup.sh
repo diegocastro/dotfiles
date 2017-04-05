@@ -2,6 +2,8 @@
 
 APP_DIR=$1
 
+sudo apt install -y git
+
 if ! [ -f $APP_DIR/stow/.gitconfig ]; then
 	echo -n "Git author name: "
 
