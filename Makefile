@@ -1,7 +1,6 @@
 install:
 	@./scripts/install.sh
-	# git submodule init
-	# git submodule update
+	git submodule update --init --recursive
 
 base16_shell:
 	base16_tomorrow-night

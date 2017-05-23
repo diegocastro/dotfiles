@@ -6,34 +6,36 @@ APPS_DIR="$DOTFILES_DIR/apps"
 
 source $SCRIPTS_DIR/helpers.sh
 
-# # Install dependencies
-# sudo apt update
-# sudo apt install stow
+# Install dependencies
+sudo apt update
+sudo apt install stow
 
-# # Setup apps
-# if confirm "Install all apps? [Y/n]"; then
-# 	install_all=true
-# else
-# 	install_all=false
-# fi
+# Setup apps
+if confirm "Install all apps? [Y/n]"; then
+	install_all=true
+else
+	install_all=false
+fi
 
-# # link stow-global-ignore because stow ignore .gitignore by default
-# ln -sf "$SCRIPTS_DIR/.stow-global-ignore" $HOME
+# link stow-global-ignore because stow ignore .gitignore by default
+ln -sf "$SCRIPTS_DIR/.stow-global-ignore" $HOME
 
-# # call the setup/setup.sh script on all apps
-# for d in $APPS_DIR/*; do
-# 	if [ "$install_all" == false ]; then
-# 		if ! confirm "Install $(basename $d)? [Y/n]"; then
-# 			continue
-# 		fi
-# 	fi
+# call the setup/setup.sh script on all apps
+for d in $APPS_DIR/*; do
+	if [ "$install_all" == false ]; then
+		if ! confirm "Install $(basename $d)? [Y/n]"; then
+			continue
+		fi
+	fi
 
-# 	if [ -f $d/setup/setup.sh ]; then
-# 		$d/setup/setup.sh $d
-# 	fi
+	if [ -f $d/setup/setup.sh ]; then
+		$d/setup/setup.sh $d
+	fi
 
-# 	cd $d && stow -t $HOME stow
-# done
+	if [ -d $d/stow ]; then
+		cd $d && stow -t $HOME stow;
+	fi
+done
 
 # Link home folders to a data partition
 if confirm "Link home folders? [Y/n]"; then
