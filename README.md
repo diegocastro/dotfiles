@@ -5,7 +5,7 @@
 Run this:
 
 ```sh
-git clone https://github.com/diegocastro/dotfiles.git ~/dotfiles
+git clone --recursive https://github.com/diegocastro/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 script/install
 ```
