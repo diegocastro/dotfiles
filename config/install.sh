@@ -1,3 +1,6 @@
+ZDOTFILESCONFIGDIR=${0:A:h}
+ZDOTFILESDIR=${ZDOTFILESCONFIGDIR%"/config"}
+
 user () {
     printf "\r  [ \033[0;33m??\033[0m ] $1 "
 }
@@ -23,7 +26,7 @@ else
 	install_all=false
 fi
 
-# call the setup/setup.sh script on all apps
+# Install 
 for d in $ZDOTFILESDIR/plugins-available/*; do
 	if [[ $install_all == false ]]; then
 		if ! confirm "Install $(basename $d)? [Y/n]"; then
@@ -31,11 +34,24 @@ for d in $ZDOTFILESDIR/plugins-available/*; do
 		fi
 	fi
 
-	ln -s $d $ZDOTFILESDIR/plugins-enabled
+	ln -sf $d $ZDOTFILESDIR/plugins-enabled
 
-	# if [ -f $d/setup/setup.sh ]; then
-	# 	$d/setup/setup.sh $d
-	# fi
-
-	# cd $d && stow -t $HOME stow
+	if [[ -f $d/setup/setup.zsh ]]; then
+		$d/setup/setup.zsh $d
+	fi
 done
+
+# # Link home folders to a data partition
+# if confirm "Link home folders? [Y/n]"; then
+# 	user "Data partition path: "
+# 	read partition_path
+
+# 	for d in $partition_path/*/; do
+# 		basename_dir=$(basename $d)
+
+# 		if confirm "Link $basename_dir? [Y/n]"; then
+# 			rm -rf $HOME/$basename_dir
+# 			ln -s $d $HOME
+# 		fi
+# 	done
+# fi
