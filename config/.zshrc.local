@@ -19,3 +19,5 @@ ZDOTFILESCONFIGDIR=${0:A:h}
 ZDOTFILESDIR=${ZDOTFILESCONFIGDIR%"/config"}
 
 xsource $ZDOTFILESDIR/plugins-enabled/*/init.zsh
+
+compinit

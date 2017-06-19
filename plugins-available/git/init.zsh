@@ -1,3 +1,4 @@
+PLUGINDIR=${0:h}
 
-source "${0:h}/alias.zsh"
-source "${0:h}/prompt.zsh"
+xsource "$PLUGINDIR/alias.zsh"
+xsource "$PLUGINDIR/prompt.zsh"

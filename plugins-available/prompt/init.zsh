@@ -1,5 +1,6 @@
-## prompt theme
-BASE16_SHELL=${0:h}/base16-shell
+PLUGINDIR=${0:h}
+
+BASE16_SHELL="$PLUGINDIR/base16-shell"
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 zstyle ':prompt:grml:left:items:user' pre '%B%F{white}'
