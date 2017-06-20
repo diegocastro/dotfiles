@@ -1,15 +1,13 @@
-ZDOTFILESCONFIGDIR=${0:A:h}
+#!/usr/bin/env bash
+
+ZDOTFILESCONFIGDIR="$(dirname "$(readlink -f "$0")")"
 ZDOTFILESDIR=${ZDOTFILESCONFIGDIR%"/config"}
 
-user () {
-    printf "\r  [ \033[0;33m??\033[0m ] $1 "
-}
+function confirm () {
+	read -p "${1:-Are you sure? [Y/n]}" -n 1 -r
+	printf "\n"
 
-confirm () {
-    # call with a prompt string or use a default
-    user " ${1:-Are you sure? [Y/n]}"
-    read response
-    case $response in
+	case $REPLY in
         [nN]) 
             false
             ;;
@@ -19,43 +17,49 @@ confirm () {
     esac
 }
 
-sudo apt install -y zsh
-
-chsh -s `which zsh`
-
-# Setup apps
-if confirm "Install all apps? [Y/n]"; then
-	install_all=true
+if confirm; then
+	echo "true"
 else
-	install_all=false
+	echo "false"
 fi
 
-# Install 
-for d in $ZDOTFILESDIR/plugins-available/*; do
-	if [[ $install_all == false ]]; then
-		if ! confirm "Install $(basename $d)? [Y/n]"; then
-			continue
-		fi
-	fi
+# sudo apt install -y zsh
 
-	ln -sf $d $ZDOTFILESDIR/plugins-enabled
+# chsh -s `which zsh`
 
-	if [[ -f $d/setup/setup.zsh ]]; then
-		$d/setup/setup.zsh $d
-	fi
-done
+# # Setup apps
+# if confirm "Install all apps? [Y/n]"; then
+# 	install_all=true
+# else
+# 	install_all=false
+# fi
+
+# # Install 
+# for d in $ZDOTFILESDIR/plugins-available/*; do
+# 	if [[ $install_all == false ]]; then
+# 		if ! confirm "Install $(basename $d)? [Y/n]"; then
+# 			continue
+# 		fi
+# 	fi
+
+# 	ln -sf $d $ZDOTFILESDIR/plugins-enabled
+
+# 	if [[ -f $d/setup/setup.zsh ]]; then
+# 		$d/setup/setup.zsh $d
+# 	fi
+# done
 
 # # Link home folders to a data partition
 # if confirm "Link home folders? [Y/n]"; then
-# 	user "Data partition path: "
+# 	printf "Data partition path: "
 # 	read partition_path
 
-# 	for d in $partition_path/*/; do
-# 		basename_dir=$(basename $d)
+# 	# for d in $partition_path/*/; do
+# 	# 	basename_dir=$(basename $d)
 
-# 		if confirm "Link $basename_dir? [Y/n]"; then
-# 			rm -rf $HOME/$basename_dir
-# 			ln -s $d $HOME
-# 		fi
-# 	done
+# 	# 	if confirm "Link $basename_dir? [Y/n]"; then
+# 	# 		rm -rf $HOME/$basename_dir
+# 	# 		ln -s $d $HOME
+# 	# 	fi
+# 	# done
 # fi
