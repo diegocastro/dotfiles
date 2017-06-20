@@ -19,6 +19,10 @@ confirm () {
     esac
 }
 
+sudo apt install -y zsh
+
+chsh -s `which zsh`
+
 # Setup apps
 if confirm "Install all apps? [Y/n]"; then
 	install_all=true
