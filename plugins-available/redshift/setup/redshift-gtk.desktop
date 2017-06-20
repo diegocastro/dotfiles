@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Redshift GTK
+Exec=/usr/bin/redshift-gtk
+X-GNOME-Autostart-enabled=true
