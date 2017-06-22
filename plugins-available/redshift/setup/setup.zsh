@@ -2,7 +2,13 @@
 
 PLUGINDIR=$1
 
-sudo apt install -y redshift-gtk
+OS=$(lsb_release -s --id)
+
+if [[ $OS == "Ubuntu" ]]; then
+	sudo apt install -y redshift-gtk
+else
+	sudo dnf install -y redshift-gtk
+fi
 
 ln -sf "$PLUGINDIR/setup/redshift.conf" "$HOME/.config"
 ln -sf "$PLUGINDIR/setup/redshift-gtk.desktop" "$HOME/.config/autostart"

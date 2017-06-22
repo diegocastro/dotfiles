@@ -2,4 +2,10 @@
 
 PLUGINDIR=$1
 
-sudo apt install -y htop meld curl
+OS=$(lsb_release -s --id)
+
+if [[ $OS == "Ubuntu" ]]; then
+	sudo apt install -y htop meld curl
+else
+	sudo dnf install -y htop meld curl
+fi

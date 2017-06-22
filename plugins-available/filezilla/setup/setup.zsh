@@ -2,4 +2,10 @@
 
 PLUGINDIR=$1
 
-sudo apt install -y filezilla
+OS=$(lsb_release -s --id)
+
+if [[ $OS == "Ubuntu" ]]; then
+	sudo apt install -y filezilla
+else
+	sudo dnf install -y filezilla
+fi

@@ -20,9 +20,15 @@ function confirm () {
 	esac
 }
 
-# sudo apt install -y zsh
+OS=$(lsb_release -s --id)
 
-# chsh -s `which zsh`
+if [[ $OS == "Ubuntu" ]]; then
+	sudo apt install -y zsh
+else
+	sudo dnf install -y zsh
+fi
+
+chsh -s `which zsh`
 
 # Setup apps
 if confirm "Install all apps? [Y/n]"; then
@@ -31,7 +37,10 @@ else
 	install_all=false
 fi
 
-# Install 
+# Install
+ln -sf $ZDOTFILESCONFIGDIR/.zshrc $HOME
+ln -sf $ZDOTFILESCONFIGDIR/.zshrc.local $HOME
+
 for d in $ZDOTFILESDIR/plugins-available/*; do
 	if [[ $install_all == false ]]; then
 		if ! confirm "Install $(basename $d)? [Y/n]"; then

@@ -2,6 +2,12 @@
 
 PLUGINDIR=$1
 
-sudo apt install -y tmux
+OS=$(lsb_release -s --id)
+
+if [[ $OS == "Ubuntu" ]]; then
+	sudo apt install -y tmux
+else
+	sudo dnf install -y tmux
+fi
 
 ln -sf "$PLUGINDIR/setup/tmux.conf" $HOME
