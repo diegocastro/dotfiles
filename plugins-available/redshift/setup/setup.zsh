@@ -11,4 +11,5 @@ else
 fi
 
 ln -sf "$PLUGINDIR/setup/redshift.conf" "$HOME/.config"
+mkdir -p "$HOME/.config/autostart"
 ln -sf "$PLUGINDIR/setup/redshift-gtk.desktop" "$HOME/.config/autostart"
