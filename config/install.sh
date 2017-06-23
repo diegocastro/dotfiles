@@ -61,11 +61,19 @@ if confirm "Link home folders? [Y/n]"; then
 	read partition_path
 
 	for d in $partition_path/*/; do
-		basename_dir=$(basename $d)
+		basenamedir=$(basename $d)
 
-		if confirm "Link $basename_dir? [Y/n]"; then
-			rm -rf $HOME/$basename_dir
-			ln -s $d $HOME
+		if confirm "Link $basenamedir? [Y/n]"; then
+			basenamedircap=${basenamedir^}
+
+			# Ubuntu like to use captilized home directory, I don't.
+			if [[ -d $HOME/$basenamedircap ]]; then
+				rm -rf $HOME/$basenamedircap
+				ln -s $d $HOME/$basenamedircap
+			else
+				rm -rf $HOME/$basenamedir
+				ln -s $d $HOME
+			fi
 		fi
 	done
 fi
