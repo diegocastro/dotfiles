@@ -1,4 +1,4 @@
-DOCKER_COMPOSE_PROJECT_DIR=/home/diego/Projetos/docker-php-alpine
+DOCKER_COMPOSE_PROJECT_DIR=/home/diego/projetos/docker-php
 DOCKER_COMPOSE_FILE="$DOCKER_COMPOSE_PROJECT_DIR/docker-compose.yml"
 
 function docker-php() {
