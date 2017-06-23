@@ -10,4 +10,4 @@ else
 	sudo dnf install -y tmux
 fi
 
-ln -sf "$PLUGINDIR/setup/tmux.conf" $HOME/.tmux.conf
+ln -sf "$PLUGINDIR/setup/.tmux.conf" $HOME
