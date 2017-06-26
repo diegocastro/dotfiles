@@ -1,0 +1,19 @@
+# Jetbrains IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Mac OSX
+.DS_Store
+
+# Linux
+.Trash-*
+*~
+*.swp
+
+# Vagrant
+.vagrant/
+
+# Python
+venv/

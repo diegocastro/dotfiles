@@ -15,3 +15,5 @@ if ! [[ -f $HOME/.gitconfig ]]; then
 
 	ln -sf $PLUGINDIR/setup/.gitconfig $HOME
 fi
+
+ln -sf $PLUGINDIR/setup/.gitignore $HOME
