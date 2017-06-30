@@ -10,5 +10,11 @@ function dkc-composer() {
 function dkc-symfony-server() {
 	app_name=$(basename `pwd -P`)
 
-	dkc-file exec web sh -c "cd $app_name && php app/console server:run 0.0.0.0:8000"
+	if [[ -f app/console ]]; then
+		console=app/console
+	else
+		console=bin/console
+	fi
+
+	dkc-file exec web sh -c "cd $app_name && php $console server:run 0.0.0.0:8000"
 }
