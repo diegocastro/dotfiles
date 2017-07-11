@@ -16,5 +16,5 @@ function dkc-symfony-server() {
 		console=bin/console
 	fi
 
-	dkc-file exec web sh -c "cd $app_name && php $console server:run 0.0.0.0:8000"
+	dkc-file exec --user="1000" web sh -c "cd $app_name && php $console server:run 0.0.0.0:8000"
 }
